@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script
+      src="https://kit.fontawesome.com/585801ee80.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Just an image -->
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+              <img src="./img/logo.png" width="50" height="50" alt="" />
+              <strong>Instituto Tecnológico Superior de Poza Rica</strong>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-lg-12"
+          style="display: flex; justify-content: flex-end; margin: 20px"
+        >
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#addUser"
+          >
+            Nuevo Usuario
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="responsive table-responsive">
+            <table class="table table-bordered" id="dataTableUsers">
+              <thead>
+                <tr>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Contraseña</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Telefono</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody class="table-users"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Add Users -->
+    <div
+      class="modal fade"
+      id="addUser"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="form_addUser">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Nombre"
+                  id="Nombre"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Apellido Paterno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="apPaterno"
+                  id="apPaterno"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Apellido Materno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="apMaterno"
+                  id="apMaterno"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Telefono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Telefono"
+                  id="Telefono"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Usuario</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Usuario"
+                  id="Usuario"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="Password"
+                  id="Password"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Agregar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Update Users -->
+    <div
+      class="modal fade"
+      id="updateUser"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Actualizar datos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="form_UpdateUser">
+              <input type="text" class="form-control" id="idUser" required />
+              <div class="form-group">
+                <label>Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="U_Nombre"
+                  id="U_Nombre"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Apellido Paterno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="U_apPaterno"
+                  id="U_apPaterno"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Apellido Materno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="U_apMaterno"
+                  id="U_apMaterno"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Telefono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="U_Telefono"
+                  id="U_Telefono"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Usuario</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="U_Usuario"
+                  id="U_Usuario"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Contraseña</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="U_Password"
+                  id="U_Password"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"
+    ></script>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
